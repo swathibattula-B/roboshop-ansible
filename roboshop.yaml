@@ -5,7 +5,7 @@
   vars:
     sg_id: sg-076ec9ad23dab2b28
     ami_id: ami-0220d79f3f480ecf5
-    domain_name: daws88s.online
+    domain_name: daws88ss.online
     env: dev
     action: create
     instances:
@@ -37,7 +37,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ item.item }}-{{ env }}.{{ domain_name }}" # mongodb-dev.daws88s.online, frontend-dev.daws88s.online
+      record: "{{ item.item }}-{{ env }}.{{ domain_name }}" # mongodb-dev.daws88ss.online, frontend-dev.daws88s.online
       type: A
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
@@ -50,7 +50,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.daws88s.online
+      record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.daws88ss.online
       type: A
       ttl: 1
       value: "{{ item.instances[0].public_ip_address }}"
@@ -66,7 +66,7 @@
     amazon.aws.route53:
       state: absent
       zone: "{{ domain_name }}"
-      record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.daws88s.online
+      record: "roboshop-{{ env }}.{{ domain_name }}" # roboshop-dev.daws88ss.online
       type: A
       ttl: 1
     loop: "{{ instances }}"
@@ -78,7 +78,7 @@
     amazon.aws.route53:
       state: absent
       zone: "{{ domain_name }}"
-      record: "{{ item }}-{{ env }}.{{ domain_name }}" # roboshop-dev.daws88s.online
+      record: "{{ item }}-{{ env }}.{{ domain_name }}" # roboshop-dev.daws88ss.online
       type: A
       ttl: 1
     loop: "{{ instances }}"
