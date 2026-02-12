@@ -37,7 +37,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ item.item }}-{{ env }}.{{ domain_name }}" # mongodb-dev.daws88ss.online, frontend-dev.daws88s.online
+      record: "{{ item.item }}-{{ env }}.{{ domain_name }}" # mongodb-dev.daws88ss.online, frontend-dev.daws88ss.online
       type: A
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
